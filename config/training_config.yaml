@@ -1,0 +1,77 @@
+# Configuration for Qwen3-0.5B Sentiment Analysis Full-Parameter Fine-Tuning
+
+# Model Configuration
+model:
+  path: "path/to/your/model" # IMPORTANT: Change this to the actual path of your base model
+  trust_remote_code: true
+  model_type: "qwen3"
+
+# Data Configuration
+data:
+  train_file: "data/processed/train.jsonl"
+  valid_file: "data/processed/valid.jsonl"
+  test_file: "data/processed/test.jsonl"
+  prompt_feature: "prompt"
+  completion_feature: "completion"
+  mask_prompt: true  # Only calculate loss on the completion part
+  max_seq_length: 256  # Sentiment analysis texts are usually short
+
+# Training Hyperparameters
+training:
+  batch_size: 8  # Can be increased on machines with more RAM (e.g., Mac Studio 70GB)
+  learning_rate: 5.0e-5  # A moderate learning rate for full-parameter fine-tuning
+  weight_decay: 0.01
+  num_epochs: 3
+  warmup_steps: 100
+  max_steps: -1  # -1 means training is based on num_epochs
+
+  # Learning Rate Scheduler
+  lr_scheduler:
+    name: "cosine_decay"
+    arguments: [5.0e-5, 1000]  # [initial_lr, total_steps]
+    warmup: 100
+    warmup_init: 1.0e-6
+
+# Optimizer Configuration
+optimizer:
+  name: "adamw"
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+
+# Evaluation and Saving
+evaluation:
+  eval_steps: 200  # Evaluate every 200 steps
+  save_steps: 500  # Save a checkpoint every 500 steps
+  logging_steps: 50  # Log training info every 50 steps
+  eval_batches: 25  # Number of batches for validation, -1 for all
+
+# Output Configuration
+output:
+  output_dir: "models/qwen3_sentiment"
+  run_name: "qwen3_0.5b_sentiment_full_finetune"
+  save_total_limit: 3  # Maximum number of checkpoints to save
+  overwrite_output_dir: true
+
+# Hardware Configuration
+hardware:
+  gradient_checkpointing: false  # Not needed with ample RAM (e.g., 70GB)
+  mixed_precision: "bf16"  # Use BF16 for mixed-precision training
+  compile_model: false  # Set to true to compile the model for a potential speed-up
+
+# Sampler Configuration (used during inference)
+sampler:
+  temperature: 0.7  # Official recommendation for Qwen3
+  top_p: 0.8       # Official recommendation for Qwen3
+  top_k: 20        # Official recommendation for Qwen3
+
+# Logging Configuration
+logging:
+  log_level: "INFO"
+  log_dir: "logs"
+  tensorboard_dir: "logs/tensorboard"
+
+# Early Stopping Configuration
+early_stopping:
+  patience: 5  # Number of steps with no improvement before stopping
+  min_delta: 0.001  # Minimum change in the monitored quantity to qualify as an improvement
+  monitor: "eval_loss"  # Metric to monitor
