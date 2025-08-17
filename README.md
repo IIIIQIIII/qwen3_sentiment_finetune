@@ -151,4 +151,4 @@ python src/inference.py \
 ## Resources
 
 - [MLX-LM Official Documentation](https://github.com/ml-explore/mlx-lm)
-- [Qwen3 Model Series](https://github.com/QwenLM/Qwen)
+- [Qwen3 Model Series](https://github.com/QwenLM/Qwen3)
