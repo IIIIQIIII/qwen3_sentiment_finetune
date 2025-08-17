@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Qwen3-0.5B Sentiment Analysis Model Evaluation Script
+Qwen3 0.6B Sentiment Analysis Model Evaluation Script
 
 This script evaluates the performance of the fine-tuned model on a test set.
 """
@@ -292,7 +292,7 @@ def main():
     args = parser.parse_args()
     
     print("=" * 60)
-    print("📊 Qwen3-0.5B Sentiment Analysis Model Evaluation 📊")
+    print("📊 Qwen3 0.6B Sentiment Analysis Model Evaluation 📊")
     print("=" * 60)
     
     # Check model path

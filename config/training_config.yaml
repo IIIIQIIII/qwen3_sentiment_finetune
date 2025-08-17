@@ -1,4 +1,4 @@
-# Configuration for Qwen3-0.5B Sentiment Analysis Full-Parameter Fine-Tuning
+# Configuration for Qwen3 0.6B Sentiment Analysis Full-Parameter Fine-Tuning
 
 # Model Configuration
 model:
@@ -48,7 +48,7 @@ evaluation:
 # Output Configuration
 output:
   output_dir: "models/qwen3_sentiment"
-  run_name: "qwen3_0.5b_sentiment_full_finetune"
+  run_name: "qwen3_0.6b_sentiment_full_finetune"
   save_total_limit: 3  # Maximum number of checkpoints to save
   overwrite_output_dir: true
 

@@ -1,10 +1,10 @@
-# Qwen3-0.5B Sentiment Analysis Full-Parameter Fine-Tuning
+# Qwen3 0.6B Sentiment Analysis Full-Parameter Fine-Tuning
 
-This project demonstrates how to perform full-parameter fine-tuning on the Qwen3-0.5B model for a Chinese sentiment analysis task using MLX-LM.
+This project demonstrates how to perform full-parameter fine-tuning on the Qwen3 0.6B model for a Chinese sentiment analysis task using MLX-LM.
 
 ## Project Overview
 
-- **Model**: Qwen3-0.5B (in BF16 format)
+- **Model**: Qwen3 0.6B (in BF16 format)
 - **Task**: Binary Sentiment Classification (Positive=1, Negative=0)
 - **Method**: Full-parameter fine-tuning (not LoRA)
 - **Framework**: MLX-LM
@@ -77,7 +77,7 @@ python src/train.py --config config/training_config.yaml
 Alternatively, you can override specific parameters via the command line:
 ```bash
 python src/train.py \
-    --model_path "/path/to/your/qwen3_0.5b_bf16" \
+    --model_path "/path/to/your/qwen3_0.6b_bf16" \
     --data_path "data/processed" \
     --output_dir "models/qwen3_sentiment_custom" \
     --batch_size 8 \
@@ -106,7 +106,7 @@ python src/inference.py \
 ## Technical Details
 
 ### Memory Usage Estimation
-- **Qwen3-0.5B Parameters**: ~1.2GB (BF16)
+- **Qwen3 0.6B Parameters**: ~1.2GB (BF16)
 - **Gradients**: ~1.2GB
 - **AdamW Optimizer States**: ~2.4GB
 - **Batch Data & Activations**: ~2-5GB

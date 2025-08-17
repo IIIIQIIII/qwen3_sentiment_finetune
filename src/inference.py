@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Qwen3-0.5B Sentiment Analysis Inference Script
+Qwen3 0.6B Sentiment Analysis Inference Script
 
 This script runs single-text, batch, or interactive inference for sentiment analysis
 using the fine-tuned model.
@@ -169,7 +169,7 @@ def print_summary(results: List[Dict]):
     
     print(f"\n📊 Prediction Summary:")
     print(f"   Total texts: {total}")
-    print(f"   Positive: {positive} ({positive/total*100:.1f}%)")
+    print(f"   Positive: {positive} ({positive/total*100:.1f}%) ")
     print(f"   Negative: {negative} ({negative/total*100:.1f}%)")
     
     # Confidence statistics
@@ -187,7 +187,7 @@ def print_summary(results: List[Dict]):
 
 def interactive_mode(model, tokenizer, sampler):
     """Runs the interactive inference mode."""
-    print("\n🎮 Entering interactive mode (type \'quit\' or \'exit\' to stop)")
+    print("\n🎮 Entering interactive mode (type 'quit' or 'exit' to stop)")
     print("=" * 50)
     
     while True:
@@ -238,7 +238,7 @@ def main():
     args = parser.parse_args()
     
     print("=" * 60)
-    print("🔮 Qwen3-0.5B Sentiment Analysis Inference 🔮")
+    print("🔮 Qwen3 0.6B Sentiment Analysis Inference 🔮")
     print("=" * 60)
     
     # Check model path
@@ -277,7 +277,7 @@ def main():
         print(f"\n🔍 Analyzing single text:")
         result = predict_sentiment(model, tokenizer, args.text, sampler, args.verbose)
         
-        sentiment_emoji = "😊"" if result['prediction'] == 1 else "😞"
+        sentiment_emoji = "😊" if result['prediction'] == 1 else "😞"
         print(f"\n{sentiment_emoji} Analysis Result:")
         print(f"   Text: {result['text']}")
         print(f"   Prediction: {result['sentiment']} ({result['prediction']})")

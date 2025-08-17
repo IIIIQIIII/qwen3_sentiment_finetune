@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Qwen3-0.5B Full-Parameter Fine-Tuning Script
+Qwen3 0.6B Full-Parameter Fine-Tuning Script
 
 This script uses the MLX-LM tuner API to perform full-parameter fine-tuning.
 """
@@ -298,7 +298,7 @@ def setup_training_args(config: Dict[str, Any]) -> TrainingArgs:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Qwen3-0.5B Sentiment Analysis Full-Parameter Fine-Tuning")
+    parser = argparse.ArgumentParser(description="Qwen3 0.6B Sentiment Analysis Full-Parameter Fine-Tuning")
     parser.add_argument("--config", type=str, default="config/training_config.yaml", 
                        help="Path to the configuration file.")
     parser.add_argument("--model_path", type=str, help="Path to the model (overrides config file).")
@@ -309,7 +309,7 @@ def main():
     cli_args = parser.parse_args()
     
     print("=" * 60)
-    print("🚀 Starting Qwen3-0.5B Sentiment Analysis Full-Parameter Fine-Tuning 🚀")
+    print("🚀 Starting Qwen3 0.6B Sentiment Analysis Full-Parameter Fine-Tuning 🚀")
     print("=" * 60)
     
     # Load config
